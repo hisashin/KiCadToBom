@@ -1,0 +1,6 @@
+"Id";"Designator";"Package";"Quantity";"Designation";"Supplier and ref";
+1;"D1B1,D2A1,D2B1,D3A1,D3B1,D4A1,D4B1,D5A1,D5B1,D6A1,D6B1,D7A1,D7B1,D8A1,D8B1,D14B1,D13B1,D14A1,D15A1,D16B1,D16A1,D15B1,D9B1,D13A1,D12B1,D12A1,D11B1,D11A1,D10B1,D10A1,D1A1,D9A1";"D_1206_nosilk";32;"D_Photo";;;
+2;"TH1";"R_0603_HandSoldering";1;"Thermistor";;;
+3;"TH2";"PinHeader_1x02_P2.54mm_Vertical";1;"Thermistor";;;
+4;"JLN1,JLS1";"Pin_Header_Straight_1x10_Pitch2.54mm";2;"Conn_01x10_Male";;;
+5;"J1";"FFC_60_Ali_HUISHUNFA";1;"Conn_01x60_Male";;;
