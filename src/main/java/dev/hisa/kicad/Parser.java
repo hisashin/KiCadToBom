@@ -13,21 +13,24 @@ import com.fasterxml.jackson.dataformat.csv.CsvMapper;
 import com.fasterxml.jackson.dataformat.csv.CsvParser;
 import com.fasterxml.jackson.dataformat.csv.CsvSchema;
 
+import dev.hisa.kicad.bomparser.digikey.APIClientService;
+import dev.hisa.kicad.bomparser.digikey.models.ApiClientSettings;
+import dev.hisa.kicad.bomparser.digikey.oauth.AuthorizationException;
+import dev.hisa.kicad.bomparser.digikey.usage.examples.FirstTokenProgram;
+import dev.hisa.kicad.bomparser.digikey.usage.examples.RefreshAndCall;
+
 public class Parser {
 
 	static Path samplePhotoDual = Paths.get("src/main/resources/sample_batch18_photo-dual.csv");
 	static Path sampleMainl = Paths.get("src/main/resources/sample_batch18_qPCR-main.csv");
 	
-	static String digikeyClientId = System.getenv("DIGIKEY_CLIENT_ID");
-	static String digikeyClientSecret = System.getenv("DIGIKEY_CLIENT_SECRET");
-
-	public static void main(String[] args) throws IOException, ParseException {
-		if(digikeyClientId == null)
-			throw new ParseException("Set env DIGIKEY_CLIENT_ID");
-		if(digikeyClientSecret == null)
-			throw new ParseException("Set env DIGIKEY_CLIENT_SECRET");
-		parse(samplePhotoDual);
+	public static void main(String[] args) throws IOException, ParseException, AuthorizationException {
+		//parse(samplePhotoDual);
 		// parse(sampleMainl);
+		FirstTokenProgram.main(args);
+		//	code=f7lLZ7BN
+		//RefreshAndCall.main(args);
+		//new APIClientService(new ApiClientSettings()).KeywordSearch("ADA2200", false);
 	}
 
 	static void parse(Path bom) throws IOException {

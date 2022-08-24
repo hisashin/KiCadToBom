@@ -110,6 +110,7 @@ public class FirstTokenProgram {
 				} catch (IOException e) {
 					// An error here indicates the client is not configured to correctly receive secured TLS connections.
 					_log.log(Level.SEVERE, e.getMessage());
+					e.printStackTrace();
 					System.exit(1);
 				} finally {
 					socket.close();
