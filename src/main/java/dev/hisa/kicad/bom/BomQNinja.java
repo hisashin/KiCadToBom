@@ -7,8 +7,6 @@ import java.text.ParseException;
 import com.fasterxml.jackson.core.exc.StreamReadException;
 import com.fasterxml.jackson.databind.DatabindException;
 
-import dev.hisa.kicad.stock.Code;
-
 public class BomQNinja extends AbstractBom {
 
 	BomQNinja() throws StreamReadException, DatabindException, IOException {
@@ -17,7 +15,6 @@ public class BomQNinja extends AbstractBom {
 
 	public static void main(String[] args) throws IOException, ParseException {
 		BomQNinja bom = new BomQNinja();
-		Code code = Code.a1;
 		/*
 		System.out.println("----------------");
 		for(Sheet sheet : project.mapSheet.values())
