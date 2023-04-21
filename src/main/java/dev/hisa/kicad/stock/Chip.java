@@ -1,13 +1,14 @@
 package dev.hisa.kicad.stock;
 
+import java.util.HashMap;
+import java.util.Map;
+
+import dev.hisa.kicad.stock.crawler.CrawlerResult;
+
 public class Chip {
 
-	String label;
-	String urlDigikey;
-	String urlTi;
-	
-	int stockDev;
-	int stockDigikey;
-	int stockTi;
+	Code code;
+	String[] urlArray;
+	Map<String, CrawlerResult> results = new HashMap<String, CrawlerResult>();
 
 }

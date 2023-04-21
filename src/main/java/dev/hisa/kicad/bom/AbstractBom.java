@@ -17,22 +17,35 @@ import java.util.regex.Pattern;
 import com.fasterxml.jackson.core.exc.StreamReadException;
 import com.fasterxml.jackson.databind.DatabindException;
 
-import dev.hisa.kicad.bom.inspector.InspectorJellyBeans;
-import dev.hisa.kicad.bom.inspector.InspectorJellyBeans.InspectorJellyBeansException;
+import dev.hisa.kicad.bom.inspector.InspectorException;
 import dev.hisa.kicad.bom.inspector.InspectorJumper;
 import dev.hisa.kicad.bom.inspector.InspectorJumper.InspectorJumperException;
 import dev.hisa.kicad.bom.inspector.InspectorPins;
 import dev.hisa.kicad.bom.inspector.InspectorPins.InspectorPinsException;
-import dev.hisa.kicad.orm.Symbol;
 import dev.hisa.kicad.orm.Footprint;
 import dev.hisa.kicad.orm.Project;
 import dev.hisa.kicad.orm.Sheet;
+import dev.hisa.kicad.orm.Symbol;
 
 public abstract class AbstractBom {
 
+	@SuppressWarnings("serial")
+	public static class BomException extends Exception {
+		String msg;
+		public BomException(String msg) {
+			this.msg = msg;
+		}
+		@Override
+		public String getMessage() {
+			return this.msg;
+		}
+	}
+	
 	protected Path path;
 	
-	AbstractBom(Path path) throws StreamReadException, DatabindException, IOException {
+	AbstractBom(Path path) throws StreamReadException, DatabindException, IOException, BomException {
+		if(path == null || path.getFileName().endsWith(".kicad_pro"))
+			throw new BomException("use .kicad_pro");
 		this.path = path;
 		//System.out.println(this);
 		//detect("00000000-0000-0000-0000-000061a99482", "J19", "fb8e20ae-ac6e-4056-b641-224f6c6653ae", "f4945194-36e4-417a-821b-2c19298110e8", "8e9c9f85-ab7c-4d0a-8da5-8d5feecdc210");
@@ -84,6 +97,7 @@ public abstract class AbstractBom {
 	
 	public Map<String, List<Footprint>> mapFootprints = new HashMap<String, List<Footprint>>();
 	public void add(Footprint footprint) {
+		if(footprint.sheetId == null)return;
 		Sheet sheet = mapSheet.get(footprint.sheetId);
 		List<Footprint> subList = mapFootprints.get(sheet.id);
 		if(subList == null) {
@@ -106,19 +120,21 @@ public abstract class AbstractBom {
 	static class MapSymbolsKey {
 		public String pack;
 		public String designation;
+		public String sheetId;
 		MapSymbolsKey(Symbol symbol) {
 			this.pack = symbol.pack;
 			this.designation = symbol.designation;
+			this.sheetId = symbol.sheetId;
 		}
 		@Override
 		public int hashCode() {
-			return Objects.hash(pack, designation);
+			return Objects.hash(pack, designation, sheetId);
 		}
 	    @Override
 		public boolean equals(Object _obj) {
 			if(_obj == null || !(_obj instanceof MapSymbolsKey))return false;
 			MapSymbolsKey obj = (MapSymbolsKey)_obj;
-			return equals(this.pack, obj.pack) && equals(this.designation, obj.designation);
+			return equals(this.pack, obj.pack) && equals(this.designation, obj.designation) && equals(this.sheetId, obj.sheetId);
 		}
 		static boolean equals(String value1, String value2) {
 			if(value1 == null && value2 == null)return true;
@@ -159,7 +175,7 @@ public abstract class AbstractBom {
 	static Pattern patternFootprintPathTop = Pattern.compile("\\(path \"/(.*)\"\\)");
 	static Pattern patternFootprintClose = Pattern.compile("^  \\)$");
 	void parsePcb(Path path) throws IOException {
-		//System.out.println("Reading " + path.toAbsolutePath().toString());
+		System.out.println("Reading " + path.toAbsolutePath().toString());
 		//print(path);
 		List<String> lines = Files.readAllLines(path);
 		Matcher m;
@@ -348,7 +364,8 @@ public abstract class AbstractBom {
 				continue;
 			}
 			try {
-				new InspectorJellyBeans(key.pack);
+				Sheet sheet = mapSheet.get(key.sheetId);
+				validateJellyBeans(key.pack, key.designation, sheet);
 				isJellyBeans = false;
 			} catch (InspectorJellyBeansException e) {
 				isJellyBeans = true;
@@ -449,5 +466,48 @@ public abstract class AbstractBom {
 					.append("\t").append(key.designation).append("\t").append(getSheetNames());
 			return buf;
 		}
+	}
+	
+	String[] getCommonJellyBeansPackStartsWith() {
+		return new String[] {
+			"Ninja-qPCR:Raspberry_Pi",
+			"Connector_Hirose:Hirose_",
+			"Ninja-qPCR:TB_SeeedOPL_320110028",
+			"Ninja-qPCR:FFC_60_Ali_HUISHUNFA",
+			"Ninja-qPCR:ATX8",
+			"Ninja-qPCR:EP2-3L3SAb",
+			"Ninja-qPCR:SOT95P240X112-3N",
+			"Ninja-qPCR:LITE_LCD",
+			"Ninja-qPCR:ALI_USB",
+			"Ninja-qPCR:REG_TO252-3",
+			"Connector_BarrelJack:BarrelJack_Horizontal",
+		};
+	}
+	protected String[] getCustomJellyBeansPackStartsWith() {
+		return null;
+	}
+	String[] getCommonJellyBeansDesignationStartsWith() {
+		return new String[] {
+			"TACTILE",
+			"Screw_Terminal",
+			"ALI_USB",
+		};
+	}
+	protected String[] getCustomJellyBeansDesignationStartsWith() {
+		return null;
+	}
+	static void validate(String value, String[] arrayStartsWith) throws InspectorJellyBeansException {
+		if(value == null || arrayStartsWith == null || arrayStartsWith.length <= 0)return;
+		for(String tmp : arrayStartsWith)
+			if(value.startsWith(tmp))
+				throw new InspectorJellyBeansException();
+	}
+	@SuppressWarnings("serial")
+	public static class InspectorJellyBeansException extends InspectorException {}
+	protected void validateJellyBeans(String pack, String designation, Sheet sheet) throws InspectorJellyBeansException {
+		validate(pack, getCommonJellyBeansPackStartsWith());
+		validate(designation, getCommonJellyBeansDesignationStartsWith());
+		validate(pack, getCustomJellyBeansPackStartsWith());
+		validate(designation, getCustomJellyBeansDesignationStartsWith());
 	}
 }

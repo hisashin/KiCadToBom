@@ -7,13 +7,15 @@ import java.text.ParseException;
 import com.fasterxml.jackson.core.exc.StreamReadException;
 import com.fasterxml.jackson.databind.DatabindException;
 
+import dev.hisa.kicad.orm.Sheet;
+
 public class BomQNinjaLite extends AbstractBom {
 
-	BomQNinjaLite() throws StreamReadException, DatabindException, IOException {
-		super(Paths.get("/Users/shingo/github/NinjaLite/kicad/NinjaLite/batch03/main-pdb/qLAMP-main.kicad_pro"));
+	BomQNinjaLite() throws StreamReadException, DatabindException, IOException, BomException {
+		super(Paths.get("/Users/shingo/github/NinjaLite/kicad/NinjaLite/batch07/main/qLAMP-main.kicad_pro"));
 	}
 
-	public static void main(String[] args) throws IOException, ParseException {
+	public static void main(String[] args) throws IOException, ParseException, BomException {
 		BomQNinjaLite bom = new BomQNinjaLite();
 		/*
 		System.out.println("----------------");
@@ -37,5 +39,10 @@ public class BomQNinjaLite extends AbstractBom {
 		System.out.println("----------------");
 		System.out.println(bom.getFootprints().size() + " footprints and " + bom.getSymbols().size() + " symbols found");
 	}
-	
+	@Override
+	protected void validateJellyBeans(String pack, String designation, Sheet sheet) throws InspectorJellyBeansException {
+		super.validateJellyBeans(pack, designation, sheet);
+		if ("Package_TO_SOT_SMD:SOT-23-5".equals(pack) && "Power".equals(sheet.label))
+			throw new InspectorJellyBeansException();
+	}
 }

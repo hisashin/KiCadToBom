@@ -9,14 +9,14 @@ import com.fasterxml.jackson.databind.DatabindException;
 
 import dev.hisa.kicad.orm.Sheet;
 
-public class BomQNinja extends AbstractBom {
+public class BomQNinjaPhotoSingle extends AbstractBom {
 
-	BomQNinja() throws StreamReadException, DatabindException, IOException, BomException {
-		super(Paths.get("/Users/shingo/github/Ninja/kicad/Ninja/batch19/main/qPCR-main.kicad_pro"));
+	BomQNinjaPhotoSingle() throws StreamReadException, DatabindException, IOException, BomException {
+		super(Paths.get("/Users/shingo/github/Ninja/kicad/Ninja/batch19/photo-single/photo-single.kicad_pro"));
 	}
 
 	public static void main(String[] args) throws IOException, ParseException, BomException {
-		BomQNinja bom = new BomQNinja();
+		BomQNinjaPhotoSingle bom = new BomQNinjaPhotoSingle();
 		/*
 		System.out.println("----------------");
 		for(Sheet sheet : project.mapSheet.values())

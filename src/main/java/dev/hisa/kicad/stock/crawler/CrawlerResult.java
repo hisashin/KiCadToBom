@@ -20,6 +20,7 @@ public class CrawlerResult {
 		}
 	}
 	
+	String label;
 	String url;
 	String status;
 	int countInStock;
