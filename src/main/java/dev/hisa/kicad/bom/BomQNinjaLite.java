@@ -7,15 +7,18 @@ import java.text.ParseException;
 import com.fasterxml.jackson.core.exc.StreamReadException;
 import com.fasterxml.jackson.databind.DatabindException;
 
+import dev.hisa.kicad.box.PartsBox.DuplicatePartInBox;
+import dev.hisa.kicad.box.PartsBox.NotUniquePackOrDesignationException;
 import dev.hisa.kicad.orm.Sheet;
 
 public class BomQNinjaLite extends AbstractBom {
 
+	static boolean separateBySheetId = false;
 	BomQNinjaLite() throws StreamReadException, DatabindException, IOException, BomException {
-		super(Paths.get("/Users/shingo/github/NinjaLite/kicad/NinjaLite/batch07/main/qLAMP-main.kicad_pro"));
+		super(Paths.get("/Users/shingo/github/NinjaLite/kicad/NinjaLite/batch07/main/qLAMP-main.kicad_pro"), separateBySheetId);
 	}
 
-	public static void main(String[] args) throws IOException, ParseException, BomException {
+	public static void main(String[] args) throws IOException, ParseException, BomException, NotUniquePackOrDesignationException, DuplicatePartInBox {
 		BomQNinjaLite bom = new BomQNinjaLite();
 		/*
 		System.out.println("----------------");
@@ -35,14 +38,22 @@ public class BomQNinjaLite extends AbstractBom {
 		}
 		*/
 		System.out.println("----------------");
-		System.out.println(bom.toString(true, true, true, true));
+		System.out.println(bom.toPartsBoxTemplate());
+		System.out.println("----------------");
+		System.out.println(bom.toString());
 		System.out.println("----------------");
 		System.out.println(bom.getFootprints().size() + " footprints and " + bom.getSymbols().size() + " symbols found");
+	}
+
+	@Override
+	protected String[] getCustomJellyBeansDesignationStartsWith() {
+		return new String[] {
+		};
 	}
 	@Override
 	protected void validateJellyBeans(String pack, String designation, Sheet sheet) throws InspectorJellyBeansException {
 		super.validateJellyBeans(pack, designation, sheet);
-		if ("Package_TO_SOT_SMD:SOT-23-5".equals(pack) && "Power".equals(sheet.label))
-			throw new InspectorJellyBeansException();
+		//if ("Package_TO_SOT_SMD:SOT-23-5".equals(pack) && "Power".equals(sheet.label))
+		//	throw new InspectorJellyBeansException();
 	}
 }

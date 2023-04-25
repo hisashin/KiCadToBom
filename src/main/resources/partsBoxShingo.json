@@ -1,0 +1,576 @@
+[
+	{
+		"code": "g1",
+		"label": "Photo Diode",
+		"variants": [
+			{
+				"pack": "Ninja:SFH2200_2201_2240",
+				"designation": "D_Photo",
+				"url": "https://www.digikey.jp/ja/products/detail/osram-opto-ams-osram/SFH-2201/8567250",
+				"stock": "enough"
+			}
+		]
+	},
+	{
+		"code": "g2",
+		"label": "Micro Controller Unit",
+		"variants": [
+			{
+				"pack": "Ninja:ESP32-S3-WROOM-1",
+				"designation": "ESP32-­S3-­WROOM­-1",
+				"url": "https://www.notion.so/ESP32-bc7170e7a9ce462e91f88119de96e85b",
+				"stock": "5"
+			}
+		]
+	},
+	{
+		"code": "g17s",
+		"label": "24 bit ADC",
+		"variants": [
+			{
+				"pack": "Package_SO:SOIC-16_3.9x9.9mm_P1.27mm",
+				"designation": "NAU7802SGI",
+				"url": "https://www.digikey.jp/ja/products/detail/nuvoton-technology-corporation-of-america/NAU7802SGI/2769782",
+				"stock": "enough"
+			}
+		]
+	},
+	{
+		"code": "g17d",
+		"label": "24bit ADC",
+		"variants": [
+			{
+				"pack": "Package_DIP:DIP-16_W7.62mm",
+				"designation": "NAU7802KGI",
+				"url": "https://www.digikey.jp/ja/products/detail/nuvoton-technology-corporation/NAU7802KGI/2769783",
+				"stock": "0"
+			}
+		]
+	},
+	{
+		"code": "g13",
+		"codeOld": "b2",
+		"label": "LED Driver",
+		"variants": [
+			{
+				"pack": "Package_SO:HTSSOP-24-1EP_4.4x7.8mm_P0.65mm_EP3.4x7.8mm_Mask2.4x4.68mm_ThermalVias",
+				"designation": "TLC5929",
+				"url": "https://www.digikey.jp/ja/products/detail/texas-instruments/TLC5929PWP/2642725",
+				"stock": "check"
+			}
+		]
+	},
+	{
+		"code": "g16",
+		"label": "USB Charge",
+		"variants": [
+			{
+				"pack": "Package_SO:TSSOP-16_4.4x5mm_P0.65mm",
+				"designation": "IP2721",
+				"url": "https://www.aliexpress.com/item/1005001943494528.html",
+				"stock": "check"
+			}
+		]
+	},
+	{
+		"code": "g8",
+		"codeOld": "a6",
+		"label": "3.3V Low Noise Regulator",
+		"variants": [
+			{
+				"pack": "Package_TO_SOT_SMD:SOT-23-5",
+				"designation": "TCR3DF33,LM(CT",
+				"url": "https://www.digikey.jp/ja/products/detail/toshiba-semiconductor-and-storage/TCR3DF33-LM-CT/5114362?utm_medium=email&utm_source=oce&utm_campaign=3316_OCE22RT&utm_content=productdetail_JP&utm_cid=2641583&so=78212225&mkt_tok=MDI4LVNYSy01MDcAAAGHary5C_anjTmJWW01NKaRhKH1rZq93-ZteLiIbXw5p2yaEDxKDBNvf_xAypbDDOH7uqiJP4pFKrU3OTnfz6-jqLE17p9qYUvFv2em34NB",
+				"stock": "check"
+			}
+		]
+	},
+	{
+		"code": "g5",
+		"codeOld": "a4",
+		"label": "16ch Analog MUX",
+		"variants": [
+			{
+				"pack": "Ninja:SSOP-24_5.3x8.2mm_P0.65mm-0.83mil",
+				"designation": "CD74HC4067M96",
+				"url": "https://www.ti.com/product/CD74HC4067/part-details/CD74HC4067SM96?keyMatch=CD74HC4067SM96",
+				"stock": "check"
+			}
+		]
+	},
+	{
+		"code": "g14",
+		"codeOld": "b4",
+		"label": "1ch Analog Switch",
+		"variants": [
+			{
+				"pack": "Ninja:SOT-23-8-8.3mil",
+				"designation": "TS12A12511DCNR",
+				"url": "https://www.ti.com/product/TS12A12511/part-details/TS12A12511DCNR?HQS=ocb-tistore-invf-invftransact-invf-store-octopart-wwe",
+				"stock": "check"
+			}
+		]
+	},
+	{
+		"code": "g6",
+		"label": "8ch Analog MUX",
+		"variants": [
+			{
+				"pack": "Package_SO:SOIC-16_3.9x9.9mm_P1.27mm",
+				"designation": "SN74LV4051A",
+				"url": "https://www.ti.com/product/SN74LV4051A/part-details/SN74LV4051ADR",
+				"stock": "check"
+			}
+		]
+	},
+	
+	{
+		"code": "h1",
+		"codeOld": "b3",
+		"label": "Op Amp",
+		"variants": [
+			{
+				"pack": "Package_TO_SOT_SMD:SOT-23-5",
+				"designation": "LMP7717MF_NOPB",
+				"url": "https://www.digikey.jp/ja/products/detail/texas-instruments/LMP7717MF-NOPB/1658219",
+				"stock": "check"
+			}
+		]
+	},
+	{
+		"code": "h16",
+		"codeOld": "d14",
+		"label": "Terminal Block",
+		"variants": [
+			{
+				"pack": "Ninja:TB_SeeedOPL_320110028",
+				"designation": "Screw_Terminal_01x02",
+				"url": "https://www.aliexpress.com/item/1005002724741195.html",
+				"stock": "check"
+			}
+		]
+	},
+	{
+		"code": "h21",
+		"label": "USB TypeC Connector",
+		"variants": [
+			{
+				"pack": "Ninja:ALI_USB",
+				"designation": "ALI_USB",
+				"url": "https://www.aliexpress.com/item/4000234491084.html?gatewayAdapt=glo2jpn&spm=a2g0o.9042311.0.0.251a4c4dflHPmh",
+				"stock": "check"
+			}
+		]
+	},
+	{
+		"code": "h18",
+		"codeOld": "d16",
+		"label": "Barrel Jack",
+		"variants": [
+			{
+				"pack": "Connector_BarrelJack:BarrelJack_Horizontal",
+				"designation": "Barrel_Jack_Switch",
+				"url": "https://www.aliexpress.com/item/1005002389113127.html",
+				"stock": "check"
+			}
+		]
+	},
+	{
+		"code": "h6",
+		"codeOld": "d4",
+		"label": "Nch MOSFET",
+		"variants": [
+			{
+				"pack": "Ninja:SOT95P240X112-3N",
+				"designation": "Q_NMOS_GSD",
+				"url": "https://www.digikey.jp/ja/products/detail/infineon-technologies/IRLML6244TRPBF/2393877",
+				"stock": "check"
+			}
+		]
+	},
+	{
+		"code": "h25",
+		"label": "Vertical Tactile Switch",
+		"variants": [
+			{
+				"pack": "Ninja:SW_TH_Tactile_alps_SKHHLPA010",
+				"designation": "TACTILE_4",
+				"url": "https://akizukidenshi.com/catalog/g/gP-07193/",
+				"stock": "5"
+			}
+		]
+	},
+	{
+		"code": "h26",
+		"label": "3.3V Regulator",
+		"variants": [
+			{
+				"pack": "Ninja:REG_TO252-3",
+				"designation": "BD433M5FP-CE2",
+				"url": "https://www.digikey.jp/ja/products/detail/diodes-incorporated/AZ1117CD-3-3TRG1/4470979?s=N4IgTCBcDaIIIC0CMKDsBhAIgWgMwDpcAVAJQHEkQBdAXyA",
+				"stock": "check"
+			},
+			{
+				"pack": "Ninja:REG_TO252-3",
+				"designation": "BD433M5FP-CE2",
+				"url": "https://www.digikey.jp/ja/products/detail/rohm-semiconductor/BD433M5FP-CE2/8028041",
+				"stock": "0"
+			}
+		]
+	},
+	{
+		"code": "h24",
+		"label": "5V Regulator",
+		"variants": [
+			{
+				"pack": "Ninja:REG_TO252-3",
+				"designation": "BA178M05FP-E2",
+				"url": "https://www.digikey.jp/ja/products/detail/rohm-semiconductor/BA178M05FP-E2/658281?s=N4IgTCBcDaIEIEECMB2AHAWQAwFYBiACgLQCiEAugL5A",
+				"stock": "check"
+			}
+		]
+	},
+	{
+		"code": "h27",
+		"label": "3.3V Regulator",
+		"variants": [
+			{
+				"pack": "Ninja:REG_TO252-3-INV",
+				"designation": "BD433M5FP-CE2",
+				"url": "https://akizukidenshi.com/catalog/g/gI-11299/",
+				"stock": "check"
+			}
+		]
+	},
+	
+	{
+		"code": "j2",
+		"codeOld": "f2",
+		"label": "10MΩ",
+		"variants": [
+			{
+				"pack": "Resistor_SMD:R_0603_1608Metric",
+				"designation": "10M",
+				"url": "https://www.digikey.jp/ja/products/detail/yageo/RC0603JR-0710ML/729648",
+				"stock": "ok"
+			}
+		]
+	},
+	{
+		"code": "j4",
+		"label": "100kΩ",
+		"variants": [
+			{
+				"pack": "Resistor_SMD:R_0603_1608Metric",
+				"designation": "100k",
+				"url": "https://www.digikey.jp/ja/products/detail/yageo/RC0603JR-07100KL/726698",
+				"stock": "ok"
+			}
+		]
+	},
+	{
+		"code": "j5",
+		"codeOld": "f6",
+		"label": "47kΩ",
+		"variants": [
+			{
+				"pack": "Resistor_SMD:R_0603_1608Metric",
+				"designation": "47k",
+				"url": "https://www.digikey.jp/ja/products/detail/yageo/RC0603FR-0747KL/730200",
+				"stock": "ok"
+			}
+		]
+	},
+	{
+		"code": "j6",
+		"codeOld": "f7",
+		"label": "47kΩ(HP)",
+		"variants": [
+			{
+				"pack": "Resistor_SMD:R_0603_1608Metric",
+				"designation": "47k_HP",
+				"url": "https://www.digikey.jp/ja/products/detail/panasonic-electronic-components/ERJ-PB3B4702V/6214417",
+				"stock": "ok"
+			}
+		]
+	},
+	{
+		"code": "j8",
+		"codeOld": "f9",
+		"label": "10kΩ",
+		"variants": [
+			{
+				"pack": "Resistor_SMD:R_0603_1608Metric",
+				"designation": "10k",
+				"url": "https://www.digikey.jp/ja/products/detail/yageo/RC0603JR-0710KL/729647",
+				"stock": "ok"
+			}
+		]
+	},
+	{
+		"code": "j9",
+		"codeOld": "f10",
+		"label": "10kΩ(HP)",
+		"variants": [
+			{
+				"pack": "Resistor_SMD:R_0603_1608Metric",
+				"designation": "10k_HP",
+				"url": "https://www.digikey.jp/ja/products/detail/panasonic-electronic-components/ERJ-PB3B1002V/6212869?s=N4IgTCBcDaIDoBcAEBRASgKQLQAUBCAzHgIwAMpYAaiALoC%2BQA",
+				"stock": "ok"
+			}
+		]
+	},
+	{
+		"code": "j10",
+		"label": "5.1kΩ",
+		"variants": [
+			{
+				"pack": "Resistor_SMD:R_0603_1608Metric",
+				"designation": "5.1k",
+				"url": "https://www.digikey.jp/ja/products/detail/yageo/RC0603JR-075K1L/726796",
+				"stock": "ok"
+			}
+		]
+	},
+	{
+		"code": "j13",
+		"label": "3.3kΩ",
+		"variants": [
+			{
+				"pack": "Resistor_SMD:R_0603_1608Metric",
+				"designation": "3.3k",
+				"url": "https://www.digikey.jp/ja/products/detail/yageo/RC0603JR-073K3L/726757",
+				"stock": "ok"
+			}
+		]
+	},
+	{
+		"code": "j12",
+		"codeOld": "f11",
+		"label": "150Ω",
+		"variants": [
+			{
+				"pack": "Resistor_SMD:R_0603_1608Metric",
+				"designation": "150",
+				"url": "https://www.digikey.jp/ja/products/detail/yageo/RC0603JR-07150RL/729661",
+				"stock": "ok"
+			}
+		]
+	},
+	
+	{
+		"code": "e2",
+		"codeOld": "e2",
+		"label": "100F25V",
+		"variants": [
+			{
+				"pack": "Ninja:35TZV100M6.3X8",
+				"designation": "100uF",
+				"url": "https://www.digikey.jp/ja/products/detail/cornell-dubilier-electronics-cde/AVE107M25X16T-F/2096335",
+				"stock": "ok"
+			}
+		]
+	},
+	{
+		"code": "e3",
+		"codeOld": "e3",
+		"label": "25uF25V",
+		"variants": [
+			{
+				"pack": "Capacitor_SMD:C_1210_3225Metric",
+				"designation": "22uF",
+				"url": "https://www.digikey.jp/ja/products/detail/samsung-electro-mechanics/CL32A226MAJNNNE/3891459",
+				"stock": "ok"
+			}
+		]
+	},
+	{
+		"code": "e4",
+		"codeOld": "e4",
+		"label": "10uF50V",
+		"variants": [
+			{
+				"pack": "Capacitor_SMD:C_0805_2012Metric",
+				"designation": "10uF",
+				"url": "https://www.digikey.jp/ja/products/detail/murata-electronics/GRM21BR61H106KE43L/10326328",
+				"stock": "ok"
+			}
+		]
+	},
+	{
+		"code": "e5",
+		"codeOld": "e5",
+		"label": "4.7uF50V",
+		"variants": [
+			{
+				"pack": "Capacitor_SMD:C_0805_2012Metric",
+				"designation": "4.7uF",
+				"url": "https://www.digikey.jp/ja/products/detail/samsung-electro-mechanics/CL21B223KBANFNC/3890574",
+				"stock": "ok"
+			}
+		]
+	},
+	{
+		"code": "e6",
+		"codeOld": "e6",
+		"label": "1uF50V",
+		"variants": [
+			{
+				"pack": "Capacitor_SMD:C_0603_1608Metric",
+				"designation": "1uF",
+				"url": "https://www.digikey.jp/ja/products/detail/tdk-corporation/C1608X5R1H105K080AB/2733540",
+				"stock": "ok"
+			}
+		]
+	},
+	{
+		"code": "e7",
+		"codeOld": "e7",
+		"label": "0.1uF50V",
+		"variants": [
+			{
+				"pack": "Capacitor_SMD:C_0603_1608Metric",
+				"designation": "0.1uF",
+				"url": "https://www.digikey.jp/ja/products/detail/samsung-electro-mechanics/CL10B104KB8NNWC/3890021",
+				"stock": "ok"
+			}
+		]
+	},
+	{
+		"code": "e8",
+		"codeOld": "e8",
+		"label": "0.01uF=10nF=10000pF50V",
+		"variants": [
+			{
+				"pack": "Capacitor_SMD:C_0603_1608Metric",
+				"designation": "0.01uF",
+				"url": "https://www.digikey.jp/ja/products/detail/samsung-electro-mechanics/CL10B103KB8NNNC/3889095",
+				"stock": "ok"
+			}
+		]
+	},
+	{
+		"code": "e11",
+		"codeOld": "e11",
+		"label": "5pF50V",
+		"variants": [
+			{
+				"pack": "Capacitor_SMD:C_0603_1608Metric",
+				"designation": "5pF",
+				"url": "https://www.digikey.jp/ja/products/detail/samsung-electro-mechanics/CL10C050CB81PNC/7320510?utm_medium=email&utm_source=oce&utm_campaign=3316_OCE22RT&utm_content=productdetail_JP&utm_cid=2641583&so=78212225&mkt_tok=MDI4LVNYSy01MDcAAAGHary5C3GGcrQnNBrqWxc6notklhgKSR6_QIhlHrhfLpXMg7jEN3XleN78ni7A9yjGj7KBJU1PGxKT4Kg5IuMWMAl7J0pJ2T4BODcbf2AD",
+				"stock": "ok"
+			}
+		]
+	},
+	
+	{
+		"code": "x",
+		"variants": [
+			{
+				"pack": "Connector_PinHeader_2.54mm:PinHeader_1x07_P2.54mm_Vertical",
+				"designation": "Conn_01x07_Pin",
+				"url": "https://...",
+				"stock": "check"
+			}
+		]
+	},
+	{
+		"code": "x",
+		"variants": [
+			{
+				"pack": "Connector_PinHeader_1.27mm:PinHeader_1x01_P1.27mm_Vertical",
+				"designation": "Conn_01x01_Male",
+				"url": "https://...",
+				"stock": "check"
+			}
+		]
+	},
+	{
+		"code": "x",
+		"variants": [
+			{
+				"pack": "Connector_PinHeader_1.27mm:PinHeader_1x02_P1.27mm_Vertical",
+				"designation": "Conn_01x02_Male",
+				"url": "https://...",
+				"stock": "check"
+			}
+		]
+	},
+	{
+		"code": "x",
+		"variants": [
+			{
+				"pack": "Connector_PinSocket_2.54mm:PinSocket_1x07_P2.54mm_Horizontal",
+				"designation": "Conn_01x07_Male",
+				"url": "https://...",
+				"stock": "check"
+			}
+		]
+	},
+	{
+		"code": "x",
+		"variants": [
+			{
+				"pack": "Connector_PinHeader_2.54mm:PinHeader_1x01_P2.54mm_Vertical",
+				"designation": "Conn_01x01_Pin",
+				"url": "https://...",
+				"stock": "check"
+			}
+		]
+	},
+	{
+		"code": "x",
+		"variants": [
+			{
+				"pack": "Connector_PinHeader_2.54mm:PinHeader_1x04_P2.54mm_Vertical",
+				"designation": "Conn_01x04_Male",
+				"url": "https://...",
+				"stock": "check"
+			}
+		]
+	},
+	{
+		"code": "x",
+		"variants": [
+			{
+				"pack": "Connector_PinHeader_2.54mm:PinHeader_1x07_P2.54mm_Vertical",
+				"designation": "Conn_01x07_Male",
+				"url": "https://...",
+				"stock": "check"
+			}
+		]
+	},
+	{
+		"code": "x",
+		"variants": [
+			{
+				"pack": "Connector_PinHeader_2.54mm:PinHeader_1x02_P2.54mm_Vertical",
+				"designation": "Conn_01x02_Pin",
+				"url": "https://...",
+				"stock": "check"
+			}
+		]
+	},
+	{
+		"code": "x",
+		"variants": [
+			{
+				"pack": "Connector_PinSocket_1.27mm:PinSocket_2x05_P1.27mm_Vertical_SMD",
+				"designation": "Conn_01x10_Male",
+				"url": "https://...",
+				"stock": "check"
+			}
+		]
+	},
+	{
+		"code": "x",
+		"variants": [
+			{
+				"pack": "Connector_PinHeader_2.54mm:PinHeader_1x02_P2.54mm_Vertical",
+				"designation": "Conn_01x02_Male",
+				"url": "https://...",
+				"stock": "check"
+			}
+		]
+	}
+]

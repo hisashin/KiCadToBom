@@ -11,8 +11,9 @@ import dev.hisa.kicad.orm.Sheet;
 
 public class BomQNinjaPhotoSingle extends AbstractBom {
 
+	static boolean separateBySheetId = false;
 	BomQNinjaPhotoSingle() throws StreamReadException, DatabindException, IOException, BomException {
-		super(Paths.get("/Users/shingo/github/Ninja/kicad/Ninja/batch19/photo-single/photo-single.kicad_pro"));
+		super(Paths.get("/Users/shingo/github/Ninja/kicad/Ninja/batch19/photo-single/photo-single.kicad_pro"), separateBySheetId);
 	}
 
 	public static void main(String[] args) throws IOException, ParseException, BomException {
@@ -35,7 +36,7 @@ public class BomQNinjaPhotoSingle extends AbstractBom {
 		}
 		*/
 		System.out.println("----------------");
-		System.out.println(bom.toString(true, true, true, true));
+		System.out.println(bom.toString());
 		System.out.println("----------------");
 		System.out.println(bom.getFootprints().size() + " footprints and " + bom.getSymbols().size() + " symbols found");
 	}
