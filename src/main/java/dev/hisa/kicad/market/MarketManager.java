@@ -10,6 +10,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
 import java.util.stream.Collectors;
@@ -23,9 +24,11 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import dev.hisa.kicad.box.PartsBox;
+import dev.hisa.kicad.box.PartsBox.DuplicatePartInBox;
+import dev.hisa.kicad.box.PartsBoxShingo;
 import dev.hisa.kicad.market.checker.AbstractMarketChecker;
-import dev.hisa.kicad.market.checker.MarketCheckerDigikey.NoStockFoundException;
-import dev.hisa.kicad.market.checker.MarketCheckerDigikey.NoUnitPriceFoundException;
+import dev.hisa.kicad.market.checker.AbstractMarketChecker.NoStockFoundException;
+import dev.hisa.kicad.market.checker.AbstractMarketChecker.NoUnitPriceFoundException;
 import dev.hisa.kicad.market.checker.MarketCheckerFactory;
 import dev.hisa.kicad.market.checker.MarketCheckerFactory.NoCheckerFoundException;
 
@@ -35,11 +38,16 @@ public class MarketManager {
 	static Path jsonPath = Paths.get("src/main/resources/market.json");
 	static boolean updateAll = false;
 	
-	public static void main(String[] args) throws JsonProcessingException, IOException, NoCheckerFoundException, NoUnitPriceFoundException, NoStockFoundException {
-		String url = "https://www.digikey.jp/ja/products/detail/texas-instruments/LMP7717MF-NOPB/1658219";
-		WebDriver driver = getDriver();
-		MarketManager manager = new MarketManager();
-		manager.add(driver, url);
+	public static void main(String[] args) throws JsonProcessingException, IOException, NoCheckerFoundException, NoUnitPriceFoundException, NoStockFoundException, DuplicatePartInBox {
+		PartsBox box = PartsBoxShingo.getInstance();
+		List<String>list = box.getUrlList();
+		MarketManager manager = MarketManager.getInstance();
+		String url;
+		for(int i = 0 ; i < list.size() ; i++) {
+			System.out.println("MarketManager.main : i=" + i);
+			url = list.get(i);
+			manager.add(url, false);
+		}
 		manager.save();
 	}
 	
@@ -50,6 +58,7 @@ public class MarketManager {
 	}
 	
 	Map<String, MarketResult> map = new TreeMap<String, MarketResult>();
+	WebDriver _driver = null;
 	
 	private MarketManager() {
 		load();
@@ -57,10 +66,10 @@ public class MarketManager {
 	void load() {
 		try {
 			String json = new String(Files.readAllBytes(jsonPath));
-			System.out.println(json);
+			//System.out.println(json);
 			ObjectMapper mapper = new ObjectMapper();
 			MarketResultContainer container = mapper.readValue(json, MarketResultContainer.class);
-			System.out.println("container.size()=" + container.size());
+			//System.out.println("container.size()=" + container.size());
 			for(MarketResult obj : container)
 				map.put(obj.url, obj);
 		} catch (JsonProcessingException e) {
@@ -74,8 +83,18 @@ public class MarketManager {
 		BufferedReader br = new BufferedReader(new InputStreamReader(is));
 		return br.lines().collect(Collectors.joining(System.lineSeparator()));
 	}
-	public void add(WebDriver driver, String url) throws NoCheckerFoundException, NoUnitPriceFoundException, NoStockFoundException {
-		map.put(url, update(driver, url));
+	public MarketResult add(String url, boolean forceUpdate) throws NoCheckerFoundException, NoUnitPriceFoundException, NoStockFoundException, JsonProcessingException, IOException {
+		MarketResult exist = map.get(url);
+		if(!forceUpdate && exist != null && !exist.isTooOld()) {
+			System.out.println("MarketManager.add : Use cache for " + exist.label + " : " + url);
+			return exist;
+		}
+		MarketResult result = update(url);
+		if(result != null) {
+			map.put(url, result);
+			save();
+		}
+		return result;
 	}
 	public void save() throws JsonProcessingException, IOException {
 		ObjectMapper mapper = new ObjectMapper();
@@ -86,32 +105,40 @@ public class MarketManager {
 	@SuppressWarnings("serial")
 	static class MarketResultContainer extends ArrayList<MarketResult> {
 	}
-	static WebDriver getDriver() {
-		ChromeOptions chromeOptions = new ChromeOptions();
-		chromeOptions.setPageLoadStrategy(PageLoadStrategy.NORMAL);
-		chromeOptions.addArguments(new String[] {"--no-sandbox", "--disable-dev-shm-usage", "--disable-gpu"});
-		WebDriver driver = null;
-		try {
-			//driver = new ChromeDriver(chromeOptions);
-			driver = new RemoteWebDriver(new URL(SELENIUM_SERVER), chromeOptions);
-		} catch (MalformedURLException e) {
-			e.printStackTrace();
+	WebDriver driver = null;
+	public WebDriver getDriver() {
+		if(driver == null) {
+			ChromeOptions chromeOptions = new ChromeOptions();
+			chromeOptions.setPageLoadStrategy(PageLoadStrategy.NORMAL);
+			chromeOptions.addArguments(new String[] {"--no-sandbox", "--disable-dev-shm-usage", "--disable-gpu"});
+			WebDriver driver = null;
+			try {
+				//driver = new ChromeDriver(chromeOptions);
+				driver = new RemoteWebDriver(new URL(SELENIUM_SERVER), chromeOptions);
+			} catch (MalformedURLException e) {
+				e.printStackTrace();
+			}
+			this.driver = driver;
 		}
 		return driver;
 	}
 
-	static long updateIntervalInMillis = 7 * 24 * 3600 * 1000; // week
 	public void update() throws NoCheckerFoundException, NoUnitPriceFoundException, NoStockFoundException {
-		long limit = System.currentTimeMillis() - updateIntervalInMillis;
-		WebDriver driver = getDriver();
 		for(MarketResult result : map.values()) {
-			if(!updateAll && limit < result.updateTime.getTime())continue;
-			map.put(result.url, update(driver, result.url));
+			if(!updateAll && !result.isTooOld())continue;
+			result = update(result.url);
+			if(result == null)continue;
+			map.put(result.url, result);
 		}
 	}
 	
-	static MarketResult update(WebDriver driver, String url) throws NoCheckerFoundException, NoUnitPriceFoundException, NoStockFoundException {
-		AbstractMarketChecker checker = MarketCheckerFactory.getChecker(url);
-		return checker.update(driver, url);
+	MarketResult update(String url) throws NoUnitPriceFoundException, NoStockFoundException {
+		try {
+			AbstractMarketChecker checker = MarketCheckerFactory.getChecker(url);
+			return checker.update(getDriver(), url);
+		} catch (NoCheckerFoundException e) {
+			System.out.println("MarketManager.update : skip " + url);
+			return null;
+		}
 	}
 }

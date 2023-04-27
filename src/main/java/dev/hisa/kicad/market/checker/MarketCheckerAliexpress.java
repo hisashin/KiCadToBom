@@ -17,7 +17,7 @@ import dev.hisa.kicad.market.MarketResult;
 import dev.hisa.kicad.market.MarketResult.Market;
 import dev.hisa.kicad.market.checker.MarketCheckerFactory.NoCheckerFoundException;
 
-public class MarketCheckerDigikey extends AbstractMarketChecker {
+public class MarketCheckerAliexpress extends AbstractMarketChecker {
 
 	public static void main(String[] args) throws NotEnglishException, JsonProcessingException, NoCheckerFoundException, NoUnitPriceFoundException, NoStockFoundException, IOException {
 		String url = "https://www.digikey.com/en/products/detail/texas-instruments/LMP7717MF-NOPB/1658219";

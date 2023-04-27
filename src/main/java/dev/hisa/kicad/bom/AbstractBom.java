@@ -14,11 +14,15 @@ import java.util.TreeMap;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import org.apache.poi.ss.usermodel.Workbook;
+
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.exc.StreamReadException;
 import com.fasterxml.jackson.databind.DatabindException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
+import dev.hisa.kicad.bom.inspector.InspectorDNP;
+import dev.hisa.kicad.bom.inspector.InspectorDNP.InspectorDNPException;
 import dev.hisa.kicad.bom.inspector.InspectorException;
 import dev.hisa.kicad.bom.inspector.InspectorJumper;
 import dev.hisa.kicad.bom.inspector.InspectorJumper.InspectorJumperException;
@@ -26,14 +30,18 @@ import dev.hisa.kicad.bom.inspector.InspectorPins;
 import dev.hisa.kicad.bom.inspector.InspectorPins.InspectorPinsException;
 import dev.hisa.kicad.box.PartsBox;
 import dev.hisa.kicad.box.PartsBox.DuplicatePartInBox;
+import dev.hisa.kicad.box.PartsBox.FindResponse;
 import dev.hisa.kicad.box.PartsBox.NotUniquePackOrDesignationException;
 import dev.hisa.kicad.box.PartsBox.PartInBox;
 import dev.hisa.kicad.box.PartsBoxShingo;
-import dev.hisa.kicad.box.StockStatus;
+import dev.hisa.kicad.market.checker.AbstractMarketChecker.NoStockFoundException;
+import dev.hisa.kicad.market.checker.AbstractMarketChecker.NoUnitPriceFoundException;
+import dev.hisa.kicad.market.checker.MarketCheckerFactory.NoCheckerFoundException;
 import dev.hisa.kicad.orm.Footprint;
 import dev.hisa.kicad.orm.Project;
 import dev.hisa.kicad.orm.Sheet;
 import dev.hisa.kicad.orm.Symbol;
+import dev.hisa.kicad.poi.PoiBom;
 
 public abstract class AbstractBom {
 
@@ -127,7 +135,7 @@ public abstract class AbstractBom {
 	}
 	
 	Map<MapSymbolsKey, List<Symbol>> mapSymbols = new HashMap<MapSymbolsKey, List<Symbol>>();
-	static class MapSymbolsKey {
+	public static class MapSymbolsKey {
 		public String pack;
 		public String designation;
 		public String sheetId;
@@ -386,18 +394,23 @@ public abstract class AbstractBom {
 			return null;
 		}
 	}
+	protected InspectorDNP getInspectorDNP() {
+		return null;
+	}
 	static class MapContainer {
 		Map<String, BomLine> mapSuperStar = new TreeMap<String, BomLine>();
 		Map<String, BomLine> mapJellyBeans = new TreeMap<String, BomLine>();
-		Map<String, BomLine> mapRegulator = new TreeMap<String, BomLine>();
 		Map<String, BomLine> mapCapacitor = new TreeMap<String, BomLine>();
+		Map<String, BomLine> mapRegulator = new TreeMap<String, BomLine>();
 		Map<String, BomLine> mapPins = new TreeMap<String, BomLine>();
 		MapContainer(AbstractBom bom) throws NotUniquePackOrDesignationException {
 			PartsBox partsBox = null;
 			boolean isJellyBeans, isPins;
 			Iterator<MapSymbolsKey> iteTmp = bom.mapSymbols.keySet().iterator();
+			InspectorDNP inspectorDNP = bom.getInspectorDNP();
 			while(iteTmp.hasNext()) {
 				MapSymbolsKey key = iteTmp.next();
+				
 				List<Symbol> subList = bom.mapSymbols.get(key);
 				Collection<Sheet> sheets = bom.getSheets(subList);
 				try {
@@ -419,18 +432,45 @@ public abstract class AbstractBom {
 					isPins = true;
 				}
 				BomLine line = new BomLine(key, subList, sheets, partsBox, isJellyBeans, isPins);
+				try {
+					inspectorDNP.validate(line.getDesinators().toString(), key.designation);
+				} catch (InspectorDNPException e) {
+					continue;
+				}
 				if(isPins)
 					mapPins.put(line.designators.toString(), line);
-				else if(line.isAllResistor())
-					mapRegulator.put(line.designators.toString(), line);
 				else if(line.isAllCapacitor())
 					mapCapacitor.put(line.designators.toString(), line);
+				else if(line.isAllResistor())
+					mapRegulator.put(line.designators.toString(), line);
 				else if(isJellyBeans)
 					mapJellyBeans.put(line.designators.toString(), line);
 				else
 					mapSuperStar.put(line.designators.toString(), line);
 			}
 		}
+	}
+	public Workbook toWorkbook() throws NotUniquePackOrDesignationException, DuplicatePartInBox, NoCheckerFoundException, NoUnitPriceFoundException, NoStockFoundException, JsonProcessingException, IOException {
+		PartsBox partsBox = PartsBoxShingo.getInstance();
+		PoiBom poiBom = new PoiBom(partsBox, getClass().getSimpleName());
+		poiBom.addHeader();
+		MapContainer container = new MapContainer(this);
+		poiBom.addBar("SuperStar");
+		for(BomLine line : container.mapSuperStar.values())
+			poiBom.addLine(line);
+		poiBom.addBar("JellyBeans");
+		for(BomLine line : container.mapJellyBeans.values())
+			poiBom.addLine(line);
+		poiBom.addBar("Capacitor");
+		for(BomLine line : container.mapCapacitor.values())
+			poiBom.addLine(line);
+		poiBom.addBar("Resistor");
+		for(BomLine line : container.mapRegulator.values())
+			poiBom.addLine(line);
+		poiBom.addBar("Pins");
+		for(BomLine line : container.mapPins.values())
+			poiBom.addLine(line);
+		return poiBom.workbook;
 	}
 	public String toString(PartsBox partsBox) throws NotUniquePackOrDesignationException {
 		MapContainer container = new MapContainer(this);
@@ -444,14 +484,14 @@ public abstract class AbstractBom {
 			for(BomLine line : container.mapJellyBeans.values())
 				buf.append(sep).append(line.toStringBuffer());
 		}
-		if(includeRegulator) {
-			buf.append(sep).append("[R]");
-			for(BomLine line : container.mapRegulator.values())
-				buf.append(sep).append(line.toStringBuffer());
-		}
 		if(includeCapacitor) {
 			buf.append(sep).append("[C]");
 			for(BomLine line : container.mapCapacitor.values())
+				buf.append(sep).append(line.toStringBuffer());
+		}
+		if(includeRegulator) {
+			buf.append(sep).append("[R]");
+			for(BomLine line : container.mapRegulator.values())
 				buf.append(sep).append(line.toStringBuffer());
 		}
 		if(includePins) {
@@ -468,79 +508,23 @@ public abstract class AbstractBom {
 			add(box, line);
 		for(BomLine line : container.mapJellyBeans.values())
 			add(box, line);
-		for(BomLine line : container.mapRegulator.values())
-			add(box, line);
 		for(BomLine line : container.mapCapacitor.values())
+			add(box, line);
+		for(BomLine line : container.mapRegulator.values())
 			add(box, line);
 		for(BomLine line : container.mapPins.values())
 			add(box, line);
 		ObjectMapper mapper = new ObjectMapper();
-		return new String(mapper.writerWithDefaultPrettyPrinter().writeValueAsBytes(box.getList()));
+		return new String(mapper.writerWithDefaultPrettyPrinter().writeValueAsBytes(box.getPartList()));
 	}
 	void add(PartsBox box, BomLine line) throws DuplicatePartInBox {
 		String pack = line.key.pack;
 		String designation = line.key.designation;
-		PartInBox partInBox = box.find(pack, designation);
-		if(partInBox != null)return;
-		partInBox = new PartInBox("x", "function", pack, designation, "https://...", "0");
+		FindResponse response = box.find(pack, designation);
+		if(response != null)return;
+		PartInBox partInBox = new PartInBox("x", "function", pack, designation, "https://...", "0");
 		box.add(partInBox);
 	}
-	static class BomLine {
-		MapSymbolsKey key;
-		List<Symbol> subList;
-		Collection<Sheet> sheets;
-		StringBuffer designators;
-		StockStatus stockStatus;
-		BomLine(MapSymbolsKey key, List<Symbol> subList, Collection<Sheet> sheets, PartsBox partsBox, boolean isJellyBeans, boolean isPins) throws NotUniquePackOrDesignationException {
-			this.key = key;
-			this.subList = subList;
-			this.sheets = sheets;
-			this.designators = getDesinators();
-			this.stockStatus = partsBox == null ? null : partsBox.getStatus(subList, sheets, isJellyBeans, isPins, isAllResistor(), isAllCapacitor());
-		}
-		static Pattern patternDesignatorResistor = Pattern.compile("^R[0-9]+$");
-		static Pattern patternDesignatorCapacitor = Pattern.compile("^C[0-9]+$");
-		boolean isAllResistor() {
-			for(Symbol symbol : subList)
-				if(!patternDesignatorResistor.matcher(symbol.designator).find())
-					return false;
-			return true;
-		}
-		boolean isAllCapacitor() {
-			for(Symbol symbol : subList)
-				if(!patternDesignatorCapacitor.matcher(symbol.designator).find())
-					return false;
-			return true;
-		}
-		StringBuffer getDesinators() {
-			StringBuffer buf = new StringBuffer();
-			String sep = "";
-			for(Symbol symbol : subList) {
-				buf.append(sep).append(symbol.designator);
-				sep = ",";
-			}
-			return buf;
-		}
-		StringBuffer getSheetNames() {
-			StringBuffer buf = new StringBuffer();
-			String sep = "";
-			for(Sheet sheet : sheets) {
-				buf.append(sep).append("@").append(sheet.label);
-				sep = ",";
-			}
-			return buf;
-		}
-		StringBuffer toStringBuffer() {
-			StringBuffer buf = new StringBuffer(designators)
-					.append("\t").append(subList.size())
-					.append("\t").append(key.pack)
-					//.append("\t").append(key.pack.replaceAll("^.*:", ""))
-					.append("\t").append(key.designation)
-					.append("\t").append(getSheetNames());
-			return buf;
-		}
-	}
-	
 	String[] getCommonJellyBeansPackStartsWith() {
 		return new String[] {
 			"Ninja-qPCR:Raspberry_Pi",

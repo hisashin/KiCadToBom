@@ -9,12 +9,19 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import dev.hisa.kicad.market.MarketResult;
-import dev.hisa.kicad.market.checker.MarketCheckerDigikey.NoStockFoundException;
-import dev.hisa.kicad.market.checker.MarketCheckerDigikey.NoUnitPriceFoundException;
 
 public abstract class AbstractMarketChecker {
 
-	public abstract MarketResult update(WebDriver driver,String url) throws NoUnitPriceFoundException, NoStockFoundException;
+	public abstract MarketResult update(WebDriver driver, String url) throws NoUnitPriceFoundException, NoStockFoundException;
+
+	@SuppressWarnings("serial")
+	public static class NoStockFoundException extends Exception {}
+	@SuppressWarnings("serial")
+	public static class NoUnitPriceFoundException extends Exception {}
+	@SuppressWarnings("serial")
+	public static class NotEnglishException extends Exception {}
+	@SuppressWarnings("serial")
+	public static class NotUSDException extends Exception {}
 
 	protected static WebElement waitClickable(WebDriver driver, By by, long waitTimeInMillis) {
 		WebDriverWait wait = new WebDriverWait(driver, Duration.ofMillis(waitTimeInMillis));

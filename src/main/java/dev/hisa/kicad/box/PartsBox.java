@@ -1,43 +1,83 @@
 package dev.hisa.kicad.box;
 
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
+import java.util.Map;
+import java.util.TreeMap;
+
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 
 import dev.hisa.kicad.orm.Sheet;
 import dev.hisa.kicad.orm.Symbol;
 
 public class PartsBox {
 
-	protected PartInBox[] getPartInBoxArray() {
-		return null;
-	}
+	Map<String, PartInBox> map = new TreeMap<String, PartInBox>();
 	
-	List<PartInBox> list = new ArrayList<PartInBox>();
-	
-	public PartsBox() throws DuplicatePartInBox {
-		PartInBox[] array = getPartInBoxArray();
-		if(array != null)
-			for(PartInBox obj : array)
-				add(obj);
+	protected PartsBox(Path jsonPath) {
+		try {
+			String json = new String(Files.readAllBytes(jsonPath));
+			//System.out.println(json);
+			ObjectMapper mapper = new ObjectMapper();
+			PartsInBoxContainer container = mapper.readValue(json, PartsInBoxContainer.class);
+			//System.out.println("container.size()=" + container.size());
+			for(PartInBox obj : container) {
+				for(PartVariant variant : obj.variants) {
+					variant.clean();
+				}
+				map.put(obj.code, obj);
+			}
+		} catch (JsonProcessingException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
-	public List<PartInBox> getList() {
+	@SuppressWarnings("serial")
+	public static class PartsInBoxContainer extends ArrayList<PartInBox> {}
+	public Collection<PartInBox> getPartList() {
+		return map.values();
+	}
+	public List<String> getUrlList() {
+		List<String> list = new ArrayList<String>();
+		for(PartInBox part : getPartList()) {
+			for(PartVariant variant : part.variants) {
+				if(variant.url == null || list.contains(variant.url))continue;
+				list.add(variant.url);
+			}
+		}
 		return list;
 	}
 	public void add(PartInBox partInBox) throws DuplicatePartInBox {
 		for(PartVariant variant : partInBox.variants) {
-			PartInBox part = find(variant.pack, variant.designation);
-			if(part != null)
+			FindResponse response = find(variant.pack, variant.designation);
+			if(response != null)
 				throw new DuplicatePartInBox(variant.pack, variant.designation);
 		}
-		this.list.add(partInBox);
+		map.put(partInBox.code, partInBox);
+	}
+	public static class FindResponse {
+		public PartInBox partInBox;
+		public PartVariant variant;
+		FindResponse(PartInBox partInBox, PartVariant variant) {
+			this.partInBox = partInBox;
+			this.variant = variant;
+		}
 	}
 	// もしDuplicatePartInBoxが投げられる場合はfindのパラメタ自体を変える必要がある
-	public PartInBox find(String pack, String designation) throws DuplicatePartInBox {
-		List<PartInBox> match = new ArrayList<PartInBox>();
-		for(PartInBox obj : list) {
-			if(obj.hasVariant(pack, designation))
-				match.add(obj);
+	public FindResponse find(String pack, String designation) throws DuplicatePartInBox {
+		//System.out.println("PartsBox.find : pack=" + pack + ", designation=" + designation);
+		List<FindResponse> match = new ArrayList<FindResponse>();
+		for(PartInBox obj : map.values()) {
+			//System.out.println("PartsBox.find : obj.code=" + obj.code);
+			PartVariant variant = obj.getVariant(pack, designation);
+			if(variant != null)
+				match.add(new FindResponse(obj, variant));
 		}
 		if(match.size() == 0)
 			return null;
@@ -49,12 +89,12 @@ public class PartsBox {
 	public static class DuplicatePartInBox extends Exception {
 		String pack;
 		String designation;
-		List<PartInBox> match;
+		List<FindResponse> match;
 		public DuplicatePartInBox(String pack, String designation) {
 			this.pack = pack;
 			this.designation = designation;
 		}
-		DuplicatePartInBox(String pack, String designation, List<PartInBox> match) {
+		DuplicatePartInBox(String pack, String designation, List<FindResponse> match) {
 			this.pack = pack;
 			this.designation = designation;
 			this.match = match;
@@ -65,11 +105,18 @@ public class PartsBox {
 		}
 	}
 	
+	public static enum Type {
+		DIP,
+		SMD
+		;
+	}
 	public static class PartInBox {
 		public String code;
 		public String label;
 		public String codeOld;
+		public Type type;
 		public PartVariant[] variants;
+		PartInBox(){}
 		public PartInBox(String code, String label, String pack, String designation, String url, String stock) {
 			this.code = code;
 			this.label = label;
@@ -80,11 +127,12 @@ public class PartsBox {
 			this.label = label;
 			this.variants = variants;
 		}
-		boolean hasVariant(String pack, String designation) {
-			for(PartVariant variant : variants)
-				if(pack.equals(variant.pack) && designation.equals(variant.designation))
-					return true;
-			return false;
+		PartVariant getVariant(String pack, String designation) {
+			for(PartVariant variant : variants) {
+				if(!pack.equals(variant.pack) || !designation.equals(variant.designation))continue;
+				return variant;
+			}
+			return null;
 		}
 	}
 	public static class PartVariant {
@@ -92,6 +140,14 @@ public class PartsBox {
 		public String designation;
 		public String url;
 		public String stock;
+		PartVariant(){}
+		
+		public void clean() {
+			if(url != null) {
+				url = url.replace("www.digikey.jp/ja/", "www.digikey.com/en/");
+				url = url.replace("www.digikey.com/ja/", "www.digikey.com/en/");
+			}
+		}
 		public PartVariant(String pack, String designation, String url, String stock) {
 			this.pack = pack;
 			this.designation = designation;

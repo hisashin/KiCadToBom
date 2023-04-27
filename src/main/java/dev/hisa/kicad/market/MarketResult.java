@@ -2,7 +2,12 @@ package dev.hisa.kicad.market;
 
 import java.util.Date;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
+@JsonIgnoreProperties(value = { "tooOld" })
 public class MarketResult {
+	
+	static long updateIntervalInMillis = 7 * 24 * 3600 * 1000; // week
 	
 	public static enum Market {
 		Digikey,
@@ -19,5 +24,10 @@ public class MarketResult {
 	public String supplier;
 	public String datasheet;
 	public Date updateTime;
-
+	
+	public boolean isTooOld() {
+		if(updateTime == null)return false;
+		long limit = System.currentTimeMillis() - updateIntervalInMillis;
+		return limit > updateTime.getTime();
+	}
 }
