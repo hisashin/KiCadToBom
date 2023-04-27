@@ -1,3 +1,3 @@
 # KiCadToBom
 
-![WhatAmI](images/whatami.jpg)
+![WhatAmI](images/whatami.png)
