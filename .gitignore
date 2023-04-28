@@ -1,3 +1,5 @@
+.gradle/
+build/
 bin/
 src/main/resources/apiclient.properties 
 src/main/resources/keystore.jks
