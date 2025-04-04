@@ -1,0 +1,388 @@
+[ {
+  "market" : "Akizuki",
+  "url" : "https://akizukidenshi.com/catalog/g/gP-07193/",
+  "label" : "SKHHLPA010",
+  "stock" : 28198,
+  "unitPriceFor100" : 0.075,
+  "supplier" : "Akizuki",
+  "datasheet" : "https://akizukidenshi.com/download/ds/alps/SKHHLP.pdf",
+  "updateTime" : null
+}, {
+  "market" : "Akizuki",
+  "url" : "https://akizukidenshi.com/catalog/g/gI-11299/",
+  "label" : "NJM2845DL1-33",
+  "stock" : 13367,
+  "unitPriceFor100" : 0.37,
+  "supplier" : "Akizuki",
+  "datasheet" : "https://akizukidenshi.com/download/ds/jrc/NJM2845.pdf",
+  "updateTime" : null
+}, {
+  "market" : "TI",
+  "url" : "https://www.ti.com/product/CD74HC4067/part-details/CD74HC4067SM96?keyMatch=CD74HC4067SM96",
+  "label" : "CD74HC4067SM96",
+  "stock" : 0,
+  "unitPriceFor100" : 0.439,
+  "supplier" : "Texas Instruments",
+  "datasheet" : "https://www.ti.com/lit/ds/symlink/cd74hc4067.pdf?ts=1682408156591&ref_url=https%253A%252F%252Fwww.ti.com%252Fproduct%252FCD74HC4067%252Fpart-details%252FCD74HC4067SM96%253FkeyMatch%253DCD74HC4067SM96",
+  "updateTime" : null
+}, {
+  "market" : "TI",
+  "url" : "https://www.ti.com/product/TS12A12511/part-details/TS12A12511DCNR?HQS=ocb-tistore-invf-invftransact-invf-store-octopart-wwe",
+  "label" : "TS12A12511DCNR",
+  "stock" : 80016,
+  "unitPriceFor100" : 1.288,
+  "supplier" : "Texas Instruments",
+  "datasheet" : "https://www.ti.com/lit/ds/symlink/ts12a12511.pdf?ts=1682449808940&ref_url=https%253A%252F%252Fwww.ti.com%252Fproduct%252FTS12A12511%252Fpart-details%252FTS12A12511DCNR%253FHQS%253Docb-tistore-invf-invftransact-invf-store-octopart-wwe",
+  "updateTime" : null
+}, {
+  "market" : "TI",
+  "url" : "https://www.ti.com/product/SN74LV4051A/part-details/SN74LV4051ADR",
+  "label" : "SN74LV4051ADR",
+  "stock" : 130317,
+  "unitPriceFor100" : 0.183,
+  "supplier" : "Texas Instruments",
+  "datasheet" : "https://www.ti.com/lit/ds/symlink/sn74lv4051a.pdf?ts=1682449859799&ref_url=https%253A%252F%252Fwww.ti.com%252Fproduct%252FSN74LV4051A%252Fpart-details%252FSN74LV4051ADR",
+  "updateTime" : null
+}, {
+  "market" : "Aliexpress",
+  "url" : "https://fr.aliexpress.com/item/1005004861044964.html?spm=a2g0o.order_list.order_list_main.56.1f2c5e5bnkgLGd&gatewayAdapt=glo2fra",
+  "label" : "2x5P Double Row PCB Female Connector",
+  "stock" : 9890,
+  "unitPriceFor100" : 0.047,
+  "supplier" : "DIYBGA",
+  "datasheet" : null,
+  "updateTime" : null
+}, {
+  "market" : "Aliexpress",
+  "url" : "https://www.aliexpress.com/item/1005001296533352.html?spm=a2g0o.order_list.order_list_main.107.1f2c5e5bnkgLGd&gatewayAdapt=glo2fra",
+  "label" : "2x50P Double Row Right angle Male Connector",
+  "stock" : 99900,
+  "unitPriceFor100" : 0.6159,
+  "supplier" : "KINBOON Official Store",
+  "datasheet" : null,
+  "updateTime" : null
+}, {
+  "market" : "Aliexpress",
+  "url" : "https://www.aliexpress.com/item/1005001296533352.html?spm=a2g0o.order_list.order_list_main.107.1f2c5e5bnkgLGd&gatewayAdapt=glo2fra",
+  "label" : "2x5P Double Row Right angle Male Connector",
+  "stock" : 999000,
+  "unitPriceFor100" : 0.06159,
+  "supplier" : "KINBOON Official Store",
+  "datasheet" : null,
+  "updateTime" : null
+}, {
+  "market" : "Aliexpress",
+  "url" : "https://fr.aliexpress.com/item/32980998451.html?spm=a2g0o.store_pc_groupList.8148356.12.45e13f73TZfc9d&pdp_npi=2%40dis%21USD%21US%20%240.60%21US%20%240.56%21%21%21%21%21%402101f49b16825605902491025e54b1%2166824644502%21sh",
+  "label" : "Pinsocket 2.54mm 1x7p Horizontal",
+  "stock" : 7420,
+  "unitPriceFor100" : 0.094,
+  "supplier" : "Store",
+  "datasheet" : null,
+  "updateTime" : null
+}, {
+  "market" : "Aliexpress",
+  "url" : "https://www.aliexpress.com/item/4000790995189.html?type=1x4p",
+  "label" : "Pinhead 2.54mm 1x4p",
+  "stock" : 394400,
+  "unitPriceFor100" : 0.0057475,
+  "supplier" : "Oweis Electronics (HK)",
+  "datasheet" : null,
+  "updateTime" : null
+}, {
+  "market" : "Aliexpress",
+  "url" : "https://www.aliexpress.com/item/4000790995189.html?type=1x7p",
+  "label" : "Pinhead 2.54mm 1x7p",
+  "stock" : 394400,
+  "unitPriceFor100" : 0.010058125,
+  "supplier" : "Oweis Electronics (HK)",
+  "datasheet" : null,
+  "updateTime" : null
+}, {
+  "market" : "Aliexpress",
+  "url" : "https://fr.aliexpress.com/item/32828417755.html?spm=a2g0o.productlist.main.1.3cd4591fQXrysR&algo_pvid=beed7e3a-caec-4a1f-aa27-6792bd2b9ef1&algo_exp_id=beed7e3a-caec-4a1f-aa27-6792bd2b9ef1-0&pdp_ext_f=%7B%22sku_id%22%3A%2212000029700062730%22%7D&pdp_npi=2%40dis%21USD%213.8%213.8%21%21%211.03%21%21%40211bf48d16726405183636546d075e%2112000029700062730%21sea&curPageLogUid=PUDJG0naKRqj&gatewayAdapt=glo2fra",
+  "label" : "ESP32-S3-WROOM-1 N16R8",
+  "stock" : 5004,
+  "unitPriceFor100" : 3.76,
+  "supplier" : "CN888 Store",
+  "datasheet" : "https://www.espressif.com/sites/default/files/documentation/esp32-s3-wroom-1_wroom-1u_datasheet_en.pdf",
+  "updateTime" : null
+}, {
+  "market" : "Aliexpress",
+  "url" : "https://fr.aliexpress.com/item/1005001943494528.html?gatewayAdapt=glo2fra",
+  "label" : "IP2721",
+  "stock" : 8542,
+  "unitPriceFor100" : 0.4784,
+  "supplier" : "IC-KYD Store",
+  "datasheet" : "https://datasheet.lcsc.com/lcsc/2006111335_INJOINIC-IP2721_C603176.pdf",
+  "updateTime" : null
+}, {
+  "market" : "Aliexpress",
+  "url" : "https://www.aliexpress.com/item/1005002389113127.html",
+  "label" : "DC Jack",
+  "stock" : 2818,
+  "unitPriceFor100" : 0.0699,
+  "supplier" : "Locheuk RF Series Store",
+  "datasheet" : "https://fr.aliexpress.com/item/1005002389113127.html?gatewayAdapt=glo2fra",
+  "updateTime" : null
+}, {
+  "market" : "Aliexpress",
+  "url" : "https://www.aliexpress.com/item/1005002724741195.html",
+  "label" : "PCB Screw Terminal",
+  "stock" : 68741,
+  "unitPriceFor100" : 0.0608,
+  "supplier" : "YXD WISH YXD WISH Store",
+  "datasheet" : "https://fr.aliexpress.com/item/1005002724741195.html?gatewayAdapt=glo2fra",
+  "updateTime" : null
+}, {
+  "market" : "Aliexpress",
+  "url" : "https://www.aliexpress.com/item/4000234491084.html?gatewayAdapt=glo2jpn&spm=a2g0o.9042311.0.0.251a4c4dflHPmh",
+  "label" : "USB TypeC Connector",
+  "stock" : 8579,
+  "unitPriceFor100" : 0.088,
+  "supplier" : "Greenmark Store",
+  "datasheet" : "https://fr.aliexpress.com/item/4000234491084.html?spm=a2g0o.9042311.0.0.251a4c4dflHPmh&gatewayAdapt=glo2fra",
+  "updateTime" : null
+}, {
+  "market" : "Digikey",
+  "url" : "https://www.digikey.com/en/products/detail/cornell-dubilier-electronics-cde/AVE107M25X16T-F/2096335",
+  "label" : "AVE107M25X16T-F",
+  "stock" : 46126,
+  "unitPriceFor100" : 0.2214,
+  "supplier" : "Cornell Dubilier Electronics (CDE)",
+  "datasheet" : "https://media.digikey.com/pdf/Data%20Sheets/Cornell%20Dubilier%20PDFs/AVE_Type_DS.pdf",
+  "updateTime" : 1682442126514
+}, {
+  "market" : "Digikey",
+  "url" : "https://www.digikey.com/en/products/detail/diodes-incorporated/AZ1117CD-3-3TRG1/4470979?s=N4IgTCBcDaIIIC0CMKDsBhAIgWgMwDpcAVAJQHEkQBdAXyA",
+  "label" : "AZ1117CD-3.3TRG1",
+  "stock" : 9203,
+  "unitPriceFor100" : 0.2459,
+  "supplier" : "Diodes Incorporated",
+  "datasheet" : "https://www.diodes.com/assets/Datasheets/AZ1117C.pdf",
+  "updateTime" : 1682442238838
+}, {
+  "market" : "Digikey",
+  "url" : "https://www.digikey.com/en/products/detail/infineon-technologies/IRLML6244TRPBF/2393877",
+  "label" : "IRLML6244TRPBF",
+  "stock" : 474297,
+  "unitPriceFor100" : 0.255,
+  "supplier" : "Infineon Technologies",
+  "datasheet" : "https://www.infineon.com/dgdl/irlml6244pbf.pdf?fileId=5546d462533600a4015356686fed261f",
+  "updateTime" : 1682442256073
+}, {
+  "market" : "Digikey",
+  "url" : "https://www.digikey.com/en/products/detail/murata-electronics/GRM21BR61H106KE43L/10326328",
+  "label" : "GRM21BR61H106KE43L",
+  "stock" : 176872,
+  "unitPriceFor100" : 0.1312,
+  "supplier" : "Murata Electronics",
+  "datasheet" : "https://search.murata.co.jp/Ceramy/image/img/A01X/G101/ENG/GRM21BR61H106KE43-01A.pdf",
+  "updateTime" : 1682442142634
+}, {
+  "market" : "Digikey",
+  "url" : "https://www.digikey.com/en/products/detail/nuvoton-technology-corporation-of-america/NAU7802SGI/2769782",
+  "label" : "NAU7802SGI",
+  "stock" : 109268,
+  "unitPriceFor100" : 1.2354,
+  "supplier" : "Nuvoton Technology Corporation",
+  "datasheet" : "https://www.nuvoton.com/export/resource-files/NAU7802%20Data%20Sheet%20V1.7.pdf",
+  "updateTime" : 1682442212803
+}, {
+  "market" : "Digikey",
+  "url" : "https://www.digikey.com/en/products/detail/nuvoton-technology-corporation/NAU7802KGI/2769783",
+  "label" : "NAU7802KGI",
+  "stock" : 13701,
+  "unitPriceFor100" : 1.2354,
+  "supplier" : "Nuvoton Technology Corporation",
+  "datasheet" : "https://www.nuvoton.com/export/resource-files/NAU7802%20Data%20Sheet%20V1.7.pdf",
+  "updateTime" : 1682442203722
+}, {
+  "market" : "Digikey",
+  "url" : "https://www.digikey.com/en/products/detail/osram-opto-ams-osram/SFH-2201/8567250",
+  "label" : "SFH 2201",
+  "stock" : 2658,
+  "unitPriceFor100" : 0.8687,
+  "supplier" : "OSRAM Opto (ams OSRAM)",
+  "datasheet" : "https://dammedia.osram.info/media/resource/hires/osram-dam-6303770/SFH%202201_EN.pdf",
+  "updateTime" : 1682442186044
+}, {
+  "market" : "Digikey",
+  "url" : "https://www.digikey.com/en/products/detail/panasonic-electronic-components/ERJ-PB3B1002V/6212869?s=N4IgTCBcDaIDoBcAEBRASgKQLQAUBCAzHgIwAMpYAaiALoC%2BQA",
+  "label" : "ERJ-PB3B1002V",
+  "stock" : 167651,
+  "unitPriceFor100" : 0.0912,
+  "supplier" : "Panasonic Electronic Components",
+  "datasheet" : "https://industrial.panasonic.com/cdbs/www-data/pdf/RDM0000/AOA0000C328.pdf",
+  "updateTime" : 1682442330275
+}, {
+  "market" : "Digikey",
+  "url" : "https://www.digikey.com/en/products/detail/panasonic-electronic-components/ERJ-PB3B4702V/6214417",
+  "label" : "ERJ-PB3B4702V",
+  "stock" : 46458,
+  "unitPriceFor100" : 0.0912,
+  "supplier" : "Panasonic Electronic Components",
+  "datasheet" : "https://industrial.panasonic.com/cdbs/www-data/pdf/RDM0000/AOA0000C328.pdf",
+  "updateTime" : 1682442313275
+}, {
+  "market" : "Digikey",
+  "url" : "https://www.digikey.com/en/products/detail/rohm-semiconductor/BA178M05FP-E2/658281?s=N4IgTCBcDaIEIEECMB2AHAWQAwFYBiACgLQCiEAugL5A",
+  "label" : "BA178M05FP-E2",
+  "stock" : 5325,
+  "unitPriceFor100" : 0.4881,
+  "supplier" : "Rohm Semiconductor",
+  "datasheet" : "https://www.rohm.com/datasheet?p=BA178M05FP&dist=Digi-key&media=referral&source=digi-key.com&campaign=Digi-key",
+  "updateTime" : 1682442230615
+}, {
+  "market" : "Digikey",
+  "url" : "https://www.digikey.com/en/products/detail/rohm-semiconductor/BD433M5FP-CE2/8028041",
+  "label" : "BD433M5FP-CE2",
+  "stock" : 0,
+  "unitPriceFor100" : 0.8742,
+  "supplier" : "Rohm Semiconductor",
+  "datasheet" : "https://www.rohm.com/datasheet?p=BD433M5FP-C&dist=Digi-key&media=referral&source=digi-key.com&campaign=Digi-key",
+  "updateTime" : 1682442247219
+}, {
+  "market" : "Digikey",
+  "url" : "https://www.digikey.com/en/products/detail/samsung-electro-mechanics/CL10B103KB8NNNC/3889095",
+  "label" : "CL10B103KB8NNNC",
+  "stock" : 7252267,
+  "unitPriceFor100" : 0.011,
+  "supplier" : "Samsung Electro-Mechanics",
+  "datasheet" : "https://media.digikey.com/pdf/Data%20Sheets/Samsung%20PDFs/CL10B103KB8NNNC_Spec.pdf",
+  "updateTime" : 1682442177495
+}, {
+  "market" : "Digikey",
+  "url" : "https://www.digikey.com/en/products/detail/samsung-electro-mechanics/CL10B104KB8NNWC/3890021",
+  "label" : "CL10B104KB8NNWC",
+  "stock" : 4683992,
+  "unitPriceFor100" : 0.0083,
+  "supplier" : "Samsung Electro-Mechanics",
+  "datasheet" : "https://media.digikey.com/pdf/Data%20Sheets/Samsung%20PDFs/CL10B104KB8NNWC_Spec.pdf",
+  "updateTime" : 1682442169574
+}, {
+  "market" : "Digikey",
+  "url" : "https://www.digikey.com/en/products/detail/samsung-electro-mechanics/CL10C050CB81PNC/7320510?utm_medium=email&utm_source=oce&utm_campaign=3316_OCE22RT&utm_content=productdetail_JP&utm_cid=2641583&so=78212225&mkt_tok=MDI4LVNYSy01MDcAAAGHary5C3GGcrQnNBrqWxc6notklhgKSR6_QIhlHrhfLpXMg7jEN3XleN78ni7A9yjGj7KBJU1PGxKT4Kg5IuMWMAl7J0pJ2T4BODcbf2AD",
+  "label" : "CL10C050CB81PNC",
+  "stock" : 40640,
+  "unitPriceFor100" : 0.0223,
+  "supplier" : "Samsung Electro-Mechanics",
+  "datasheet" : "https://media.digikey.com/pdf/Data%20Sheets/Samsung%20PDFs/CL10C050CB81PNC_Spec.pdf",
+  "updateTime" : 1682441511555
+}, {
+  "market" : "Digikey",
+  "url" : "https://www.digikey.com/en/products/detail/samsung-electro-mechanics/CL21B223KBANFNC/3890574",
+  "label" : "CL21B223KBANFNC",
+  "stock" : 165868,
+  "unitPriceFor100" : 0.0175,
+  "supplier" : "Samsung Electro-Mechanics",
+  "datasheet" : "https://media.digikey.com/pdf/Data%20Sheets/Samsung%20PDFs/CL21B223KBANFNC_Spec.pdf",
+  "updateTime" : 1682442151148
+}, {
+  "market" : "Digikey",
+  "url" : "https://www.digikey.com/en/products/detail/samsung-electro-mechanics/CL32A226MAJNNNE/3891459",
+  "label" : "CL32A226MAJNNNE",
+  "stock" : 355488,
+  "unitPriceFor100" : 0.2291,
+  "supplier" : "Samsung Electro-Mechanics",
+  "datasheet" : "http://weblib.samsungsem.com/mlcc/mlcc-ec-data-sheet.do?partNumber=CL32A226MAJNNN",
+  "updateTime" : 1682442135149
+}, {
+  "market" : "Digikey",
+  "url" : "https://www.digikey.com/en/products/detail/tdk-corporation/C1608X5R1H105K080AB/2733540",
+  "label" : "C1608X5R1H105K080AB",
+  "stock" : 809306,
+  "unitPriceFor100" : 0.0633,
+  "supplier" : "TDK Corporation",
+  "datasheet" : "https://product.tdk.com/system/files/dam/doc/product/capacitor/ceramic/mlcc/catalog/mlcc_commercial_general_en.pdf",
+  "updateTime" : 1682442160387
+}, {
+  "market" : "Digikey",
+  "url" : "https://www.digikey.com/en/products/detail/texas-instruments/LMP7717MF-NOPB/1658219",
+  "label" : "LMP7717MF/NOPB",
+  "stock" : 6780,
+  "unitPriceFor100" : 1.9404,
+  "supplier" : "Texas Instruments",
+  "datasheet" : "https://rocelec.widen.net/view/pdf/egpgi1vkfv/snosay7h.pdf?t.download=true&u=5oefqw",
+  "updateTime" : 1682440629921
+}, {
+  "market" : "Digikey",
+  "url" : "https://www.digikey.com/en/products/detail/texas-instruments/TLC5929PWP/2642725",
+  "label" : "TLC5929PWP",
+  "stock" : 420,
+  "unitPriceFor100" : 1.3504,
+  "supplier" : "Texas Instruments",
+  "datasheet" : "https://www.ti.com/general/docs/suppproductinfo.tsp?distId=10&gotoUrl=https%3A%2F%2Fwww.ti.com%2Flit%2Fgpn%2Ftlc5929",
+  "updateTime" : 1682442195081
+}, {
+  "market" : "Digikey",
+  "url" : "https://www.digikey.com/en/products/detail/toshiba-semiconductor-and-storage/TCR3DF33-LM-CT/5114362?utm_medium=email&utm_source=oce&utm_campaign=3316_OCE22RT&utm_content=productdetail_JP&utm_cid=2641583&so=78212225&mkt_tok=MDI4LVNYSy01MDcAAAGHary5C_anjTmJWW01NKaRhKH1rZq93-ZteLiIbXw5p2yaEDxKDBNvf_xAypbDDOH7uqiJP4pFKrU3OTnfz6-jqLE17p9qYUvFv2em34NB",
+  "label" : "TCR3DF33,LM(CT",
+  "stock" : 1953,
+  "unitPriceFor100" : 0.1957,
+  "supplier" : "Toshiba Semiconductor and Storage",
+  "datasheet" : "https://toshiba.semicon-storage.com/info/docget.jsp?did=14709&prodName=TCR3DF10",
+  "updateTime" : 1682442220909
+}, {
+  "market" : "Digikey",
+  "url" : "https://www.digikey.com/en/products/detail/yageo/RC0603FR-0747KL/730200",
+  "label" : "RC0603FR-0747KL",
+  "stock" : 11398795,
+  "unitPriceFor100" : 0.0093,
+  "supplier" : "YAGEO",
+  "datasheet" : "https://www.yageo.com/upload/media/product/productsearch/datasheet/rchip/PYu-RC_Group_51_RoHS_L_12.pdf",
+  "updateTime" : 1682442304214
+}, {
+  "market" : "Digikey",
+  "url" : "https://www.digikey.com/en/products/detail/yageo/RC0603JR-07100KL/726698",
+  "label" : "RC0603JR-07100KL",
+  "stock" : 3740081,
+  "unitPriceFor100" : 0.0076,
+  "supplier" : "YAGEO",
+  "datasheet" : "https://www.yageo.com/upload/media/product/productsearch/datasheet/rchip/PYu-RC_Group_51_RoHS_L_12.pdf",
+  "updateTime" : 1682442295354
+}, {
+  "market" : "Digikey",
+  "url" : "https://www.digikey.com/en/products/detail/yageo/RC0603JR-0710KL/729647",
+  "label" : "RC0603JR-0710KL",
+  "stock" : 8116237,
+  "unitPriceFor100" : 0.0076,
+  "supplier" : "YAGEO",
+  "datasheet" : "https://www.yageo.com/upload/media/product/productsearch/datasheet/rchip/PYu-RC_Group_51_RoHS_L_12.pdf",
+  "updateTime" : 1682442321331
+}, {
+  "market" : "Digikey",
+  "url" : "https://www.digikey.com/en/products/detail/yageo/RC0603JR-0710ML/729648",
+  "label" : "RC0603JR-0710ML",
+  "stock" : 644063,
+  "unitPriceFor100" : 0.0076,
+  "supplier" : "YAGEO",
+  "datasheet" : "https://www.yageo.com/upload/media/product/productsearch/datasheet/rchip/PYu-RC_Group_51_RoHS_L_12.pdf",
+  "updateTime" : 1682442287229
+}, {
+  "market" : "Digikey",
+  "url" : "https://www.digikey.com/en/products/detail/yageo/RC0603JR-07150RL/729661",
+  "label" : "RC0603JR-07150RL",
+  "stock" : 1092769,
+  "unitPriceFor100" : 0.0079,
+  "supplier" : "YAGEO",
+  "datasheet" : "https://www.yageo.com/upload/media/product/productsearch/datasheet/rchip/PYu-RC_Group_51_RoHS_L_12.pdf",
+  "updateTime" : 1682442271724
+}, {
+  "market" : "Digikey",
+  "url" : "https://www.digikey.com/en/products/detail/yageo/RC0603JR-073K3L/726757",
+  "label" : "RC0603JR-073K3L",
+  "stock" : 892723,
+  "unitPriceFor100" : 0.0076,
+  "supplier" : "YAGEO",
+  "datasheet" : "https://www.yageo.com/upload/media/product/productsearch/datasheet/rchip/PYu-RC_Group_51_RoHS_L_12.pdf",
+  "updateTime" : 1682442279502
+}, {
+  "market" : "Digikey",
+  "url" : "https://www.digikey.com/en/products/detail/yageo/RC0603JR-075K1L/726796",
+  "label" : "RC0603JR-075K1L",
+  "stock" : 25750,
+  "unitPriceFor100" : 0.0076,
+  "supplier" : "YAGEO",
+  "datasheet" : "https://www.yageo.com/upload/media/product/productsearch/datasheet/rchip/PYu-RC_Group_51_RoHS_L_12.pdf",
+  "updateTime" : 1682442263534
+} ]
